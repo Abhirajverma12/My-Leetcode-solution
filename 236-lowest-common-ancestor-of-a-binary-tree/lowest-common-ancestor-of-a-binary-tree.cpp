@@ -12,7 +12,7 @@ public:
     bool ancestorofnode(TreeNode* root, TreeNode* node,vector<TreeNode*>& vec){
         if(root == NULL) return false;
         vec.push_back(root);
-        if(root->val == node->val) {return true;}
+        if(root == node) {return true;}
         int left = ancestorofnode(root->left,node,vec);
         int right = ancestorofnode(root->right,node,vec);
         if(left || right ){
@@ -29,20 +29,13 @@ public:
 
         // cout<<res1<<endl;
         // cout<<res2<<endl;
-        map<TreeNode*,int>mpp ;
+        int n = min(res1.size(),res2.size());
+        if(res1[0] != res2[0]) return nullptr;
+        
+        for(int i = 1 ; i < n ;i++){
+            if(res1[i] != res2[i]) return res1[i-1];
+        }
 
-        int n1 = res1.size() , n2 = res2.size();
-        TreeNode* ans;
-        for(int i=0;i<n1;i++){
-            mpp[res1[i]]++;
-        }
-        for(int i=0;i<n2;i++){
-            mpp[res2[i]]++;
-        }
-        for(auto it:mpp){
-            if(it.second==2) ans = it.first;
-        }
-        return ans;
-
+        return res1[n-1];
     }
 };
