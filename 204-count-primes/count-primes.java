@@ -1,7 +1,8 @@
 class Solution {
     public int countPrimes(int n) {
         boolean[] isPrime = new boolean[n];
-        Arrays.fill(isPrime ,true);
+
+        Arrays.fill(isPrime ,true); // here  we assign all valus of isPrime - true
 
         if(n>0){isPrime[0]=false;}
         if(n>1){isPrime[1]=false;}
