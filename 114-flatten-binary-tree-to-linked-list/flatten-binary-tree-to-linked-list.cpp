@@ -11,23 +11,17 @@
  */
 class Solution {
 public:
-     TreeNode* prev = NULL;
-
-    void solve(TreeNode* root) {
-        if (root == NULL)
-            return;
-
-        // Important: right first, then left
-        solve(root->right);
-        solve(root->left);
-
-        root->right = prev;
-        root->left = NULL;
-
-        prev = root;
-    }
+    TreeNode* prev ;
 
     void flatten(TreeNode* root) {
-        solve(root);
+        if(root == NULL){return ;}
+
+        flatten(root->right);
+        flatten(root->left);
+
+        root->right = prev ;
+        root->left = NULL ;
+
+        prev = root;
     }
 };
