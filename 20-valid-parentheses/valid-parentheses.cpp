@@ -8,30 +8,15 @@ public:
             
             if(st.empty() || ch =='(' || ch == '{' || ch == '['){
                 st.push(ch);
-                continue;
             }
-            
-            if(ch == ')'){
-                if(st.top()=='('){
-                    st.pop();
-                }else{
-                    return false;
+            else{
+                char chst = st.top();
+                if(st.empty()) {return false;}
+                else if((chst == '(' && ch ==')') || (chst =='[' && ch ==']') || (chst =='{' && ch =='}')){
+                   st.pop(); 
                 }
-            }
-            
-            if(ch == '}'){
-                if(st.top()=='{'){
-                    st.pop();
-                }else{
-                    return false;
-                }
-            }
-            
-            if(ch == ']'){
-                if(st.top()=='['){
-                    st.pop();
-                }else{
-                    return false;
+                else{
+                    return false ;
                 }
             }
             
