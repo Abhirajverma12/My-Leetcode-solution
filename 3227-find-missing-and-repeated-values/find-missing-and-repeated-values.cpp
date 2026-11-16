@@ -6,10 +6,7 @@ public:
         unordered_map<int,int>freq ;
         for(int i=0;i<n;i++){
             for(int j =0;j<grid[i].size();j++){
-                if(freq.find(grid[i][j])==freq.end()){
-                    freq[grid[i][j]]=1;
-                }
-                else freq[grid[i][j]]++;
+                freq[grid[i][j]]++;
             }
         }
         int mis =-1;
